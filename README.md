@@ -39,7 +39,7 @@ The electron app should open and refresh automatically.
 npm run build
 ```
 
-Further configure your build as per [these instructions](https://www.electronforge.io/configuration).
+Builds will be available in the `out` folder. Configure your build further via [these instructions](https://www.electronforge.io/configuration).
 
 ---
 

@@ -6,13 +6,13 @@
     "main": "dist/main.js",
     "scripts": {
         "preinstall": "npx npm-force-resolutions",
-        "start": "electron-forge start",
+        "start": "npm run dev",
         "dev": "npm run typecheck && npm run electron:start | npm run parcel:watch",
         "build": "npm run typecheck && npm run parcel:build && npm run electron:build",
-        "parcel:main": "tsc src/main.ts -outDir dist",
+        "parcel:main": "parcel build src/main.ts --target electron",
         "parcel:watch": "parcel watch ./src/index.html --public-url ./",
         "parcel:build": "parcel build ./src/index.html --public-url ./",
-        "electron:start": "npm run parcel:main && electron . --dev",
+        "electron:start": "npm run parcel:main && electron-forge start",
         "electron:build": "npm run parcel:main && electron-forge make",
         "electron:package": "electron-forge package",
         "typecheck": "tsc --noEmit"

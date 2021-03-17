@@ -7,9 +7,8 @@ import { app, BrowserWindow } from 'electron';
  * - 'index.html': The starting point for the main UI using Preact
  */
 
-// Checks dev mode args
-const devMode = process.argv.some(val => val === '--dev')
-if (devMode) require('electron-reload')(__dirname)
+// Reload on file changes in dev mode
+if (!app.isPackaged) require('electron-reload')(__dirname)
 
 // Start electron app
 app.on('ready', function () {
