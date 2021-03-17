@@ -1,8 +1,8 @@
 <div align="center">
 
-# Typescript + Preact + Tailwind CSS Boilerplate
+# Electron boilerplate for Typescript + Preact + Tailwind CSS
 
-A minimal [Preact](https://preactjs.com/) and [Typescript](https://www.typescriptlang.org/) app using [Tailwind CSS](https://tailwindcss.com/) and bundled with [Parcel](https://parceljs.org/).
+A minimal [Electron](https://www.electronjs.org/) boilerplate for [Preact](https://preactjs.com/), [Typescript](https://www.typescriptlang.org/) and [Tailwind CSS](https://tailwindcss.com/) and bundled with [Parcel](https://parceljs.org/).
 </div>
 
 ## Features
@@ -27,18 +27,12 @@ npm install
 ```
 npm start
 ```
-Open dev server on [localhost:1234](http://localhost:1234/).
+
+The electron app should open automatically.
 
 ## 💻 Release
 
-```
-npm run build
-```
-Files are built and minified in the `dist` folder.
-
-Deploy statically (e.g. [Netlify](https://www.netlify.com/)) with the following build settings:
-- Command: `npm run build`
-- Directory: `dist`
+Coming soon...
 
 ---
 

@@ -11,9 +11,12 @@
         "jsxFragmentFactory": "Fragment",
         "noUnusedLocals": true,
         "noUnusedParameters": true,
+        "typeRoots": [
+            "./node_modules/@types"
+        ],
     },
     "exclude": [
-        "node_modules",
         "dist",
+        "node_modules",
     ]
 }
