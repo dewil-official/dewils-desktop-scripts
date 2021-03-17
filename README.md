@@ -17,10 +17,13 @@ A minimal [Electron](https://www.electronjs.org/) boilerplate for [Preact](https
 
 ## 👟 Install
 
+> Ensure [node](https://nodejs.org) (v12.13+) is installed.
+
 ```
 npm install
 ```
-> Ensure [node](https://nodejs.org) (v12.13+) is installed.
+
+Update the `package.json` file with the project `name`, `description`, and `authors` (required by the electron packager).
 
 ## 🍕 Develop
 
@@ -28,11 +31,15 @@ npm install
 npm start
 ```
 
-The electron app should open automatically.
+The electron app should open and refresh automatically.
 
 ## 💻 Release
 
-Coming soon...
+```
+npm run build
+```
+
+Further configure your build as per [these instructions](https://www.electronforge.io/configuration).
 
 ---
 

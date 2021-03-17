@@ -1,17 +1,20 @@
 {
     "version": "1.0.0",
+    "authors": "your.name",
     "name": "boilerplate-preact",
-    "description": "",
-    "main": "dist/init.js",
+    "description": "Electron, Preact, Tailwind boilerplate",
+    "main": "dist/main.js",
     "scripts": {
         "preinstall": "npx npm-force-resolutions",
-        "start": "npm run dev",
-        "dev": "npm run typecheck && npm run electron | npm run parcel:watch",
-        "electron": "npm run parcel:init && electron . --dev",
-        "build": "npm run typecheck && npm run parcel:build",
-        "parcel:init": "tsc src/init.ts -outDir dist",
+        "start": "electron-forge start",
+        "dev": "npm run typecheck && npm run electron:start | npm run parcel:watch",
+        "build": "npm run typecheck && npm run parcel:build && npm run electron:build",
+        "parcel:main": "tsc src/main.ts -outDir dist",
         "parcel:watch": "parcel watch ./src/index.html --public-url ./",
         "parcel:build": "parcel build ./src/index.html --public-url ./",
+        "electron:start": "npm run parcel:main && electron . --dev",
+        "electron:build": "npm run parcel:main && electron-forge make",
+        "electron:package": "electron-forge package",
         "typecheck": "tsc --noEmit"
     },
     "alias": {
@@ -23,6 +26,11 @@
         "last 2 firefox versions"
     ],
     "devDependencies": {
+        "@electron-forge/cli": "^6.0.0-beta.54",
+        "@electron-forge/maker-deb": "^6.0.0-beta.54",
+        "@electron-forge/maker-rpm": "^6.0.0-beta.54",
+        "@electron-forge/maker-squirrel": "^6.0.0-beta.54",
+        "@electron-forge/maker-zip": "^6.0.0-beta.54",
         "@types/node": "^14.14.35",
         "autoprefixer": "^9.8.6",
         "electron": "^12.0.1",
@@ -32,9 +40,39 @@
         "typescript": "^4.1.3"
     },
     "dependencies": {
+        "electron-squirrel-startup": "^1.0.0",
         "preact": "^10.5.12"
     },
     "resolutions": {
         "node-forge": "0.10.0"
+    },
+    "config": {
+        "forge": {
+            "packagerConfig": {
+                "dir": "dist"
+            },
+            "makers": [
+                {
+                    "name": "@electron-forge/maker-squirrel",
+                    "config": {
+                        "name": "boilerplate_preact"
+                    }
+                },
+                {
+                    "name": "@electron-forge/maker-zip",
+                    "platforms": [
+                        "darwin"
+                    ]
+                },
+                {
+                    "name": "@electron-forge/maker-deb",
+                    "config": {}
+                },
+                {
+                    "name": "@electron-forge/maker-rpm",
+                    "config": {}
+                }
+            ]
+        }
     }
 }
