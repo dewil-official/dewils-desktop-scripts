@@ -1,5 +1,6 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, shell } from 'electron';
 import path, { dirname } from 'path';
+import './main/ipc';
 
 /** This is the main entry file of the electon app.
  *
@@ -25,6 +26,12 @@ app.on('ready', function () {
     })
 
     window.loadFile('./dist/index.html')
+
+    // Open external links in a browser instead of the electron app
+    window.webContents.on('new-window', function (e, url) {
+        e.preventDefault()
+        shell.openExternal(url)
+    });
 
     if (app.isPackaged) window.setMenuBarVisibility(false)
 })
