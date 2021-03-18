@@ -23,7 +23,9 @@ A minimal [Electron](https://www.electronjs.org/) boilerplate for [Preact](https
 npm install
 ```
 
-Update the `package.json` file with the project `name`, `description`, and `authors` (required by the electron packager).
+Update the boilerplate with your project details:
+- Update the `title` tag with your project name in `index.html`.
+- Update `name`, `description`, and `authors` values in `package.json`. Note these are required by the electron packager.
 
 ## 🍕 Develop
 
@@ -31,7 +33,9 @@ Update the `package.json` file with the project `name`, `description`, and `auth
 npm start
 ```
 
-The electron app should open and refresh automatically.
+The electron app will open and refresh automatically.
+
+You can also run `npm run main:start` and `npm run render:start` scripts separately.
 
 ## 💻 Release
 

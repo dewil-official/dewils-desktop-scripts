@@ -6,16 +6,21 @@
     "main": "dist/main.js",
     "scripts": {
         "preinstall": "npx npm-force-resolutions",
-        "start": "npm run dev",
-        "dev": "npm run typecheck && npm run electron:start | npm run parcel:watch",
-        "build": "npm run typecheck && npm run parcel:build && npm run electron:build",
-        "parcel:main": "parcel build src/main.ts --target electron",
-        "parcel:watch": "parcel watch ./src/index.html --public-url ./",
-        "parcel:build": "parcel build ./src/index.html --public-url ./",
-        "electron:start": "npm run parcel:main && electron-forge start",
-        "electron:build": "npm run parcel:main && electron-forge make",
+        "prestart": "npm run typecheck",
+        "start": "npm run render:start | npm run main:start",
+        "prebuild": "npm run clean && npm run typecheck",
+        "build": "npm run render:build && npm run main:build && electron:build",
+        "render:start": "npm run render:watch",
+        "render:watch": "parcel watch ./src/index.html --target electron --public-url ./ --no-hmr",
+        "render:build": "parcel build ./src/index.html --target electron --public-url ./",
+        "main:start": "npm run main:watch | npm run electron:start",
+        "main:watch": "parcel watch src/main.ts --target node --no-hmr",
+        "main:build": "parcel build src/main.ts --target node",
+        "electron:start": "electron-forge start",
+        "electron:build": "electron-forge make",
         "electron:package": "electron-forge package",
-        "typecheck": "tsc --noEmit"
+        "typecheck": "tsc --noEmit",
+        "clean": "rimraf dist"
     },
     "alias": {
         "react": "preact/compat",
@@ -36,6 +41,7 @@
         "electron": "^12.0.1",
         "electron-reload": "^1.5.0",
         "parcel-bundler": "^1.12.4",
+        "rimraf": "^2.7.1",
         "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.2",
         "typescript": "^4.1.3"
     },
